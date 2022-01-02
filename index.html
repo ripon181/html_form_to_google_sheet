@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Al-Arafah Islami Bank Contact Center Duty adjustment Module</title>
+</head>
+<body>
+  <body>
+    <div class="container">
+            <div class="row py-6">
+                <div class="col-12">
+                    <form id="myForm" onsubmit="handleFormSubmit(this)" name="google-sheet">
+                      <div id="form_alerts"></div>
+                        <p class="h4 mb-4 text-center font-weight-bold font-weight-light " >Al-Arafah Islami Bank Contact Center
+                            Duty adjustment Module</p>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="employee_id">Employee Id</label>
+                                <input type="number" class="form-control" id="employee_id" name="employee_id" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="assigned_by">Assigned by</label>
+                                <input type="text" class="form-control" id="assigned_by" name="assigned_by">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="employee_name">Employee Name</label>
+                                <input type="text" class="form-control" id="employee_name" name="employee_name" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="start_time">Start Time</label>
+                                <input type="time" class="form-control" id="start_time" name="start_time">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                
+                                <p>Gender</p> <div class="form-check form-check-inline">
+                                    <input name="gender" type="radio" name="gender" value="male"> Male <input type="radio" name="gender" value="female">  Female
+                                </div>
+                                
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="end_time">End Time</label>
+                                <input type="time" class="form-control" id="end_time" name="end_time">
+                            </div>
+                        </div>
+
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="assigned_task_details">Assigned Task Details</label>
+                            <textarea name="assigned_task_details" id="assigned_task_details" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date" name="date">
+                        </div>
+                     </div>
+                        
+
+                        
+                        <button type="reset" class="btn btn-danger float-right ml-2">Reset</button>
+                        <button type="submit" class="btn btn-success float-right ml-2">Save</button>
+                    </form>
+                    <div id="output"></div>
+                </div>
+            </div>      
+        </div>
+
+
+        <style>
+            #myForm{
+                margin-top: 50px;
+                padding: 20px 10px;
+                box-shadow: 5px 5px 10px rgb(255, 1, 1);
+                border-radius: 10px;
+                height: 500px;
+            }
+        </style>
+
+
+
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbx0SDQx77Boxu99RU2MudvbLJXHCwEigKsA3Twc0LBvd1pYwbuUdpOBrgnNrFpMFWxJ/exec'
+  const form = document.forms['google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => $("#form_alerts").html("<div class='alert alert-success'>Form has been Sent successfully!!!</div>"))
+      .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Form has not been sent.</div>"))
+  })
+</script>
+
+
+
+
+  </body>
+
+</body>
+</html>
